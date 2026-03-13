@@ -1,15 +1,4 @@
 #!/bin/bash
-# ============================================================
-# INCIDENT 2: Memory Leak / Runaway Process
-# Target: VM3 (192.168.200.10) - Target Server
-# Run this script ON VM3
-# Requires: stress-ng (install: sudo dnf install -y stress-ng)
-# ============================================================
-
-echo "======================================"
-echo "  INCIDENT 2: MEMORY LEAK SIMULATION"
-echo "======================================"
-echo ""
 
 # Install stress-ng if not present
 if ! command -v stress-ng &>/dev/null; then
