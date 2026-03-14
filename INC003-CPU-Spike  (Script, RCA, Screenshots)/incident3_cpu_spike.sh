@@ -6,10 +6,6 @@
 # Requires: stress-ng (sudo dnf install -y stress-ng)
 # ============================================================
 
-echo "======================================"
-echo "  INCIDENT 3: CPU SPIKE SIMULATION"
-echo "======================================"
-echo ""
 
 if ! command -v stress-ng &>/dev/null; then
     echo "[SETUP] Installing stress-ng..."
@@ -54,7 +50,7 @@ cat << 'EOF'
   top -bn1 | head -20
   uptime   # Load averages (1, 5, 15 min)
 
-  # 2. Find CPU-hungry processes
+  # 2. Find CPU-high processes
   ps aux --sort=-%cpu | head -10
 
   # 3. Per-core CPU usage
@@ -75,14 +71,13 @@ EOF
 echo "[FIX COMMANDS]:"
 cat << 'EOF'
 
-  # Kill the runaway process
   kill <PID>
-  kill -9 <PID>     # Force if needed
+  kill -9 <PID>     
 
-  # Kill all stress-ng instances
+
   pkill stress-ng
 
-  # Verify CPU returned to normal
+
   top -bn1 | grep "Cpu(s)"
   uptime
 
